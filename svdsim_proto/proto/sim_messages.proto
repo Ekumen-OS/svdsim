@@ -1,0 +1,169 @@
+// Copyright 2025 Ekumen
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package svdsim_server;
+
+// Placeholder message with no contents
+message PlaceholderMessage {}
+
+// Ping message for testing communication
+message PingMessage {
+  uint64 sequence_number = 1;
+}
+
+// Pong message for testing communication
+message PongMessage {
+  uint64 sequence_number = 1;
+}
+
+// Broadcast timestamp message trigger
+message BroadcastTimestamp {}
+
+// Velocity command (incoming)
+message VelocityCommand {
+  double value = 1;
+}
+
+// Steering command (incoming)
+message SteeringCommand {
+  double value = 1;
+}
+
+// Reset vehicle state command (incoming)
+message ResetVehicleState {
+  double x = 1;
+  double y = 2;
+  double yaw = 3;
+}
+
+// Wheel encoder data (outgoing)
+message WheelEncoderData {
+  int32 rear_left_pulse_count = 1;
+  int32 rear_right_pulse_count = 2;
+}
+
+// Lidar scan data (outgoing)
+message LidarScanData {
+  double min_range = 1;
+  double max_range = 2;
+  double horizontal_fov = 3;
+  int32 points_per_scan = 4;
+  double scan_rate = 5;
+  repeated double ranges = 6;
+}
+
+// Steering status data (outgoing)
+message SteeringFeedback {
+  double value = 1;
+}
+
+// IMU sample data (outgoing)
+message IMUSampleData {
+  // Accelerometer measurement in IMU frame [m/s^2]
+  double accel_x = 1;
+  double accel_y = 2;
+  double accel_z = 3;
+  // Gyroscope measurement in IMU frame [rad/s]
+  double gyro_x = 4;
+  double gyro_y = 5;
+  double gyro_z = 6;
+  // Magnetometer measurement in IMU frame [T]
+  double mag_x = 7;
+  double mag_y = 8;
+  double mag_z = 9;
+}
+
+// Ground truth vehicle state (outgoing)
+// All quantities are referenced to base_link, located at the midpoint of the rear axle at ground level.
+message GroundTruthData {
+  // Position of base_link in world frame [m]
+  double x = 1;
+  double y = 2;
+  // Orientation of base_link in world frame [rad]
+  double yaw = 3;
+  // Linear velocity of base_link expressed in vehicle frame [m/s]
+  double vx = 4;
+  double vy = 5;
+  // Angular velocity of base_link expressed in vehicle frame [rad/s]
+  double yaw_rate = 6;
+}
+
+// Sparring vehicle pose marker data (outgoing)
+message SparringPoseMarker {
+  // Vehicle pose in world frame
+  double x = 1;
+  double y = 2;
+  double yaw = 3;
+  // Unique entity identifier for this sparring vehicle
+  uint32 entity_id = 4;
+}
+
+// Sparring vehicle lookahead target marker data (outgoing)
+message SparringLookaheadMarker {
+  // Target point position in world frame
+  double target_x = 1;
+  double target_y = 2;
+  // Unique entity identifier for this sparring vehicle
+  uint32 entity_id = 3;
+}
+
+// Wall collision status (outgoing)
+// Collision count (outgoing)
+message CollisionCountData {
+  uint64 obstacle_collision_count = 1;
+  uint64 vehicle_collision_count = 2;
+  bool in_collision_with_obstacle = 3;
+  bool in_collision_with_vehicle = 4;
+}
+
+// Timestamp with seconds and fractional components
+message Timestamp {
+  int64 seconds = 1;
+  double fraction = 2;
+}
+
+message ServerInbound {
+  oneof payload {
+    PingMessage ping = 4;
+    VelocityCommand velocity_command = 8;
+    SteeringCommand steering_command = 9;
+    ResetVehicleState reset_vehicle_state = 13;
+  }
+}
+
+message ServerOutbound {
+  oneof payload {
+    PongMessage pong = 3;
+    BroadcastTimestamp broadcast_timestamp = 5;
+    WheelEncoderData wheel_encoder_data = 10;
+    LidarScanData lidar_scan_data = 11;
+    SteeringFeedback steering_feedback = 12;
+    IMUSampleData imu_sample_data = 14;
+    GroundTruthData ground_truth_data = 15;
+    SparringPoseMarker sparring_pose_marker = 16;
+    SparringLookaheadMarker sparring_lookahead_marker = 17;
+    CollisionCountData collision_count_data = 18;
+  }
+}
+
+// Union message that can contain different message types
+message SimDataMessage {
+  Timestamp timestamp = 1;
+  oneof payload {
+    ServerInbound server_inbound = 6;
+    ServerOutbound server_outbound = 7;
+  }
+}
