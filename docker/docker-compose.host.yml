@@ -1,0 +1,9 @@
+# Docker Compose override file for host network mode
+#
+# This file configures the svdsim container to use the host network.
+#
+# Usage: Automatically applied by run.sh
+
+services:
+  svdsim_devel:
+    network_mode: host

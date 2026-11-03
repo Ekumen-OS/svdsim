@@ -14,13 +14,7 @@ A lightweight 2D simulator for autonomous racing development, designed for the M
 
 ## Running the Simulator
 
-The SVD Simulator integrates seamlessly with the Monaco RoboRacer stack and can be launched through the standard bringup system:
-
-```bash
-ros2 launch monacof1_bringup main.launch.py platform_id:=svdsim rviz:=True
-```
-
-For detailed usage instructions and examples, see the [SVD Simulator bringup documentation](../monacof1_bringup_packages/monacof1_bringup_svdsim/README.md).
+TBD: usage instructions will be added once a standalone example launch package is available for this repository.
 
 ### Key Features
 

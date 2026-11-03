@@ -1,0 +1,15 @@
+BasedOnStyle: Chromium
+Language: Cpp
+PointerAlignment: Left
+ColumnLimit: 120
+AlignAfterOpenBracket: AlwaysBreak
+QualifierAlignment: Left
+---
+# Git clang-format json support issue: https://burnicki.pl/en/2021/10/19/git-clang-format-json-support-issue.html
+Language: Json
+BasedOnStyle: llvm
+---
+Language: Proto
+BasedOnStyle: Google
+ColumnLimit: 120
+IndentWidth: 2
