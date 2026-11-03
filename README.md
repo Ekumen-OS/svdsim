@@ -90,3 +90,26 @@ TBD: usage instructions will be added once a standalone example launch package i
 - ROS 2 (Robot Operating System 2)
   - [Documentation](https://docs.ros.org/)
   - Component-based architecture framework used throughout the simulator.
+
+## License
+
+This project is licensed under the [Apache License 2.0](LICENSE).
+
+### Third-Party Dependency Licenses
+
+The simulator links against or builds with the following third-party components. All of them are permissively licensed or, in Eigen's and ZeroMQ's case, weak-copyleft at the file level, and none impose additional conditions on this project's Apache-2.0 license:
+
+| Dependency | License | How it's used |
+|---|---|---|
+| ROS 2 (`rclcpp`, `std_msgs`, etc.) | Apache License 2.0 | System package, dynamically linked |
+| OpenCV | Apache License 2.0 | System package (`libopencv-dev`), dynamically linked |
+| Box2D | MIT License | System package (`box2d-dev`), dynamically linked |
+| Sophus | MIT License | System package, header-only |
+| yaml-cpp | MIT License | System package, dynamically linked |
+| EnTT | MIT License | Fetched from its upstream GitHub repository at build time (not vendored in this repository), header-only |
+| Protocol Buffers | BSD 3-Clause License | System package (`protobuf-dev`), dynamically linked; also used at build time to generate C++ code from `.proto` definitions |
+| Eigen3 | Mozilla Public License 2.0 | System package, header-only, used unmodified |
+| ZeroMQ (`libzmq`) | Mozilla Public License 2.0 | System package (`libzmq3-dev`), dynamically linked via `pkg-config` |
+| cppzmq | MIT License | System package, header-only C++ bindings for ZeroMQ |
+
+No GPL- or AGPL-licensed dependencies are used.
