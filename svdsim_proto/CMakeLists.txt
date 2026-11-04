@@ -105,7 +105,7 @@ if(BUILD_TESTING)
     ${PROJECT_NAME}
   )
 
-  find_package(ament_lint_auto REQUIRED ex)
+  find_package(ament_lint_auto REQUIRED)
   ament_lint_auto_find_test_dependencies()
 endif()
 

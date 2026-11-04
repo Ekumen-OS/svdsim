@@ -40,7 +40,7 @@ include(ExternalProject)
 set(ENTT_SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/entt-src)
 set(ENTT_INCLUDE_DIR ${ENTT_SOURCE_DIR}/src)
 
-ExternalProject_Add(entt_external
+externalproject_add(entt_external
   GIT_REPOSITORY https://github.com/skypjack/entt.git
   GIT_TAG b4e58bdd364ad72246c123a0c28538eab3252672
   PREFIX ${CMAKE_CURRENT_BINARY_DIR}/entt
@@ -178,6 +178,9 @@ if(BUILD_TESTING)
   find_package(ament_cmake_gtest REQUIRED)
   find_package(ament_cmake_gmock REQUIRED)
   include(test/CMakeLists.txt)
+
+  find_package(ament_lint_auto REQUIRED)
+  ament_lint_auto_find_test_dependencies()
 endif()
 
 ament_package()
