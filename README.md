@@ -28,8 +28,6 @@ TBD: usage instructions will be added once a standalone example launch package i
 ### State Estimation and Robotics
 
 - Barfoot, T. D. (2017). *State Estimation for Robotics*. Cambridge University Press.
-  - ISBN: 978-1107159396
-  - Provides the theoretical foundation for IMU sensor models and coordinate frame transformations used in the simulator.
 
 ### Vehicle Dynamics
 
@@ -40,7 +38,7 @@ TBD: usage instructions will be added once a standalone example launch package i
 
 - Milani, S., Marzbani, H., Khazaei, A., Simic, M., and Jazar, R. N. (2019). "Elliptical Combined-Slip Tire Model in Vehicle Dynamics." In *Innovation in Medicine and Healthcare Systems, and Multimedia*, Smart Innovation, Systems and Technologies, Vol. 145, pp. 457-468. Springer.
 
-- Brach, R. M., and Brach, R. M. (2000). "Modeling Combined Braking and Steering Tire Forces." SAE Technical Paper 2000-01-0357. [ResearchGate](https://www.researchgate.net/publication/267196202_Modeling_Combined_Braking_and_Steering_Tire_Forces)
+- Brach, R. M., and Brach, R. M. (2000). "Modeling Combined Braking and Steering Tire Forces." SAE Technical Paper 2000-01-0357.
 
 ### IMU Noise Modeling
 
@@ -50,24 +48,21 @@ TBD: usage instructions will be added once a standalone example launch package i
 
 - **Box2D**: 2D Physics Engine
   - Catto, E. Box2D: A 2D physics engine for games.
-  - [Project Website](https://box2d.org/)
   - [GitHub Repository](https://github.com/erincatto/box2d)
 
 - **EnTT**: Entity Component System (ECS) Library
   - Corsi, M. EnTT - A fast and reliable entity component system (ECS).
   - [GitHub Repository](https://github.com/skypjack/entt)
-  - [Documentation](https://skypjack.github.io/entt/)
 
 - **Eigen**: C++ Template Library for Linear Algebra
   - Guennebaud, G., Jacob, B., et al. Eigen v3.
-  - [Project Website](https://libeigen.gitlab.io/)
+  - [GitLab Repository](https://gitlab.com/libeigen/eigen)
 
 - **Sophus**: C++ Lie Group Library
   - Strasdat, H. Sophus - C++ implementation of Lie Groups using Eigen.
   - [GitHub Repository](https://github.com/strasdat/Sophus)
 
 - **Protocol Buffers**: Google's data interchange format
-  - [Documentation](https://protobuf.dev/)
   - [GitHub Repository](https://github.com/protocolbuffers/protobuf)
 
 ## License
@@ -87,8 +82,8 @@ The simulator links against or builds with the following third-party components.
 | [yaml-cpp](https://github.com/jbeder/yaml-cpp) | MIT License | System package, dynamically linked |
 | [EnTT](https://github.com/skypjack/entt) | MIT License | Fetched from its upstream GitHub repository at build time (not vendored in this repository), header-only |
 | [Protocol Buffers](https://github.com/protocolbuffers/protobuf) | BSD 3-Clause License | System package (`protobuf-dev`), dynamically linked; also used at build time to generate C++ code from `.proto` definitions |
-| [Eigen3](https://gitlab.com/libeigen/eigen) | Mozilla Public License 2.0 | System package, header-only, used unmodified |
-| [ZeroMQ](https://github.com/zeromq/libzmq) (`libzmq`) | Mozilla Public License 2.0 | System package (`libzmq3-dev`), dynamically linked via `pkg-config` |
+| [Eigen](https://gitlab.com/libeigen/eigen) | Mozilla Public License 2.0 | System package, header-only, used unmodified |
+| [ZeroMQ](https://github.com/zeromq/libzmq) | Mozilla Public License 2.0 | System package (`libzmq3-dev`), dynamically linked via `pkg-config` |
 | [cppzmq](https://github.com/zeromq/cppzmq) | MIT License | System package, header-only C++ bindings for ZeroMQ |
 
 No GPL- or AGPL-licensed dependencies are used.
