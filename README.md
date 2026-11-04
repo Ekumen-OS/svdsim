@@ -1,4 +1,4 @@
-# SVD Simulator
+# SVDSim
 
 A lightweight 2D simulator for autonomous racing development, designed for the Monaco RoboRacer project. The simulator provides realistic vehicle dynamics, sensor models, and environment simulation for testing and developing autonomous racing algorithms.
 

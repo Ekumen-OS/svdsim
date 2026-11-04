@@ -1,5 +1,5 @@
 <!-- omit in toc -->
-# Contributing to SVD Simulator
+# Contributing to SVDSim
 
 First off, thanks for taking the time to contribute!
 
@@ -79,7 +79,7 @@ After the issue has been submitted:
 
 ### Requesting Features
 
-This section guides you through submitting a feature request for SVD Simulator, **including completely new additions and minor improvements to existing functionality**. Following these guidelines will help maintainers and the community to understand your suggestion and find related suggestions.
+This section guides you through submitting a feature request for SVDSim, **including completely new additions and minor improvements to existing functionality**. Following these guidelines will help maintainers and the community to understand your suggestion and find related suggestions.
 
 <!-- omit in toc -->
 #### Before Submitting a Feature Request
@@ -97,11 +97,11 @@ Feature requests are tracked as [GitHub issues](https://github.com/Ekumen-OS/svd
 - Use a **clear and descriptive title** for the issue to identify the suggestion.
 - Provide a **step-by-step description of the suggested feature** in as many details as possible.
 - **Describe the current behavior** and **explain which behavior you expected to see instead** and why.
-- **Explain why this feature would be useful** to most SVD Simulator users. You may also want to point out the other projects that solved it better and which could serve as inspiration.
+- **Explain why this feature would be useful** to most SVDSim users. You may also want to point out the other projects that solved it better and which could serve as inspiration.
 
 ### Your First Code Contribution
 
-This section guides you through contributing code to SVD Simulator. Following these guidelines will help maintainers and ensure your contributions are reviewed and eventually accepted.
+This section guides you through contributing code to SVDSim. Following these guidelines will help maintainers and ensure your contributions are reviewed and eventually accepted.
 
 #### A Primer On Project Workflow
 
@@ -109,7 +109,7 @@ This projects adopts a [feature branch workflow](https://about.gitlab.com/topics
 
 #### How Do I Submit a Good Code Contribution?
 
-1. **Fork the [SVD Simulator repository](https://github.com/Ekumen-OS/svdsim/) to your GitHub account**.
+1. **Fork the [SVDSim repository](https://github.com/Ekumen-OS/svdsim/) to your GitHub account**.
 1. **Clone the repository fork locally**. You will need `git`.
    ```bash
    git clone git@github.com:<your_username>/svdsim.git
