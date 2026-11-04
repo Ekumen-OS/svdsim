@@ -5,6 +5,7 @@
   <version>1.0.0</version>
   <description>Monaco F1TENTH simulation bridge ROS 2 message definitions</description>
   <maintainer email="glpuga@ekumenlabs.com">Gerardo Puga</maintainer>
+  <author email="glpuga@ekumenlabs.com">Gerardo Puga</author>
   <license>Apache-2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
