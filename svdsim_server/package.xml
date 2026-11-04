@@ -5,7 +5,7 @@
   <version>1.0.0</version>
   <description>Monaco F1TENTH simulation server providing physics simulation and vehicle dynamics for autonomous racing development</description>
   <maintainer email="glpuga@ekumenlabs.com">Gerardo Puga</maintainer>
-  <license>Apache License 2.0</license>
+  <license>Apache-2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
