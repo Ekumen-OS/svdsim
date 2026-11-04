@@ -30,36 +30,21 @@ TBD: usage instructions will be added once a standalone example launch package i
 - Barfoot, T. D. (2017). *State Estimation for Robotics*. Cambridge University Press.
   - ISBN: 978-1107159396
   - Provides the theoretical foundation for IMU sensor models and coordinate frame transformations used in the simulator.
-  - [Publisher Link](https://www.cambridge.org/core/books/state-estimation-for-robotics/AC4B5BD23A11EDADE0C4513DE6552E4A)
 
 ### Vehicle Dynamics
 
 - Guiggiani, M. (2018). *The Science of Vehicle Dynamics: Handling, Braking, and Ride of Road and Race Cars*. 2nd Edition. Springer.
-  - Advanced treatment of vehicle dynamics with emphasis on racing applications, tire mechanics, and handling characteristics.
-
 - Liniger, A. (2012). *Autonomous Drift Control*. Master's Thesis, ETH Zurich.
-  - Presents drift control techniques and vehicle dynamics models for autonomous drifting, including single-track drift models.
 
-- Althoff, M., Koschi, M., and Manzinger, S. (2017). "CommonRoad: Composable Benchmarks for Motion Planning on Roads." *Proceedings of the IEEE Intelligent Vehicles Symposium*, pp. 719-726.
-  - Provides standardized vehicle models and benchmarking framework for motion planning, used as reference for vehicle dynamics modeling.
-  - [Project Website](https://commonroad.in.tum.de/)
+- Althoff, M., Koschi, M., and Manzinger, S. (2017). "CommonRoad: Composable Benchmarks for Motion Planning on Roads." *Proceedings of the IEEE Intelligent Vehicles Symposium*, pp. 719-726. [Project Website](https://commonroad.in.tum.de/)
 
 - Milani, S., Marzbani, H., Khazaei, A., Simic, M., and Jazar, R. N. (2019). "Elliptical Combined-Slip Tire Model in Vehicle Dynamics." In *Innovation in Medicine and Healthcare Systems, and Multimedia*, Smart Innovation, Systems and Technologies, Vol. 145, pp. 457-468. Springer.
-  - Presents an elliptical combined-slip tire model for improved vehicle dynamics simulation.
-  - [DOI: 10.1007/978-981-13-8566-6_44](https://doi.org/10.1007/978-981-13-8566-6_44)
 
-- Brach, R. M., and Brach, R. M. (2000). "Modeling Combined Braking and Steering Tire Forces." SAE Technical Paper 2000-01-0357.
-  - Presents the Modified Nicolas-Comstock (MNC) tire model for combined longitudinal and lateral tire forces.
-  - Provides equations for computing tire forces under simultaneous slip and sideslip conditions.
-  - [DOI: 10.4271/2000-01-0357](https://doi.org/10.4271/2000-01-0357)
-  - [ResearchGate](https://www.researchgate.net/publication/267196202_Modeling_Combined_Braking_and_Steering_Tire_Forces)
+- Brach, R. M., and Brach, R. M. (2000). "Modeling Combined Braking and Steering Tire Forces." SAE Technical Paper 2000-01-0357. [ResearchGate](https://www.researchgate.net/publication/267196202_Modeling_Combined_Braking_and_Steering_Tire_Forces)
 
 ### IMU Noise Modeling
 
-- Kalibr IMU Noise Model
-  - IMU noise characterization methodology used for accelerometer and gyroscope simulation.
-  - [Documentation](https://github.com/ethz-asl/kalibr/wiki/IMU-Noise-Model)
-  - Based on the Allan variance method for IMU characterization.
+- Kalibr IMU Noise Model. [Documentation](https://github.com/ethz-asl/kalibr/wiki/IMU-Noise-Model)
 
 ### Software Libraries
 
@@ -75,7 +60,7 @@ TBD: usage instructions will be added once a standalone example launch package i
 
 - **Eigen**: C++ Template Library for Linear Algebra
   - Guennebaud, G., Jacob, B., et al. Eigen v3.
-  - [Project Website](https://eigen.tuxfamily.org/)
+  - [Project Website](https://libeigen.gitlab.io/)
 
 - **Sophus**: C++ Lie Group Library
   - Strasdat, H. Sophus - C++ implementation of Lie Groups using Eigen.
@@ -84,12 +69,6 @@ TBD: usage instructions will be added once a standalone example launch package i
 - **Protocol Buffers**: Google's data interchange format
   - [Documentation](https://protobuf.dev/)
   - [GitHub Repository](https://github.com/protocolbuffers/protobuf)
-
-### Additional Resources
-
-- ROS 2 (Robot Operating System 2)
-  - [Documentation](https://docs.ros.org/)
-  - Component-based architecture framework used throughout the simulator.
 
 ## License
 
@@ -101,15 +80,15 @@ The simulator links against or builds with the following third-party components.
 
 | Dependency | License | How it's used |
 |---|---|---|
-| ROS 2 (`rclcpp`, `std_msgs`, etc.) | Apache License 2.0 | System package, dynamically linked |
-| OpenCV | Apache License 2.0 | System package (`libopencv-dev`), dynamically linked |
-| Box2D | MIT License | System package (`box2d-dev`), dynamically linked |
-| Sophus | MIT License | System package, header-only |
-| yaml-cpp | MIT License | System package, dynamically linked |
-| EnTT | MIT License | Fetched from its upstream GitHub repository at build time (not vendored in this repository), header-only |
-| Protocol Buffers | BSD 3-Clause License | System package (`protobuf-dev`), dynamically linked; also used at build time to generate C++ code from `.proto` definitions |
-| Eigen3 | Mozilla Public License 2.0 | System package, header-only, used unmodified |
-| ZeroMQ (`libzmq`) | Mozilla Public License 2.0 | System package (`libzmq3-dev`), dynamically linked via `pkg-config` |
-| cppzmq | MIT License | System package, header-only C++ bindings for ZeroMQ |
+| [ROS 2](https://github.com/ros2/ros2) (`rclcpp`, `std_msgs`, etc.) | Apache License 2.0 | System package, dynamically linked |
+| [OpenCV](https://github.com/opencv/opencv) | Apache License 2.0 | System package (`libopencv-dev`), dynamically linked |
+| [Box2D](https://github.com/erincatto/box2d) | MIT License | System package (`box2d-dev`), dynamically linked |
+| [Sophus](https://github.com/strasdat/Sophus) | MIT License | System package, header-only |
+| [yaml-cpp](https://github.com/jbeder/yaml-cpp) | MIT License | System package, dynamically linked |
+| [EnTT](https://github.com/skypjack/entt) | MIT License | Fetched from its upstream GitHub repository at build time (not vendored in this repository), header-only |
+| [Protocol Buffers](https://github.com/protocolbuffers/protobuf) | BSD 3-Clause License | System package (`protobuf-dev`), dynamically linked; also used at build time to generate C++ code from `.proto` definitions |
+| [Eigen3](https://gitlab.com/libeigen/eigen) | Mozilla Public License 2.0 | System package, header-only, used unmodified |
+| [ZeroMQ](https://github.com/zeromq/libzmq) (`libzmq`) | Mozilla Public License 2.0 | System package (`libzmq3-dev`), dynamically linked via `pkg-config` |
+| [cppzmq](https://github.com/zeromq/cppzmq) | MIT License | System package, header-only C++ bindings for ZeroMQ |
 
 No GPL- or AGPL-licensed dependencies are used.
