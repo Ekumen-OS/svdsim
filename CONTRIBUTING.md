@@ -134,7 +134,9 @@ This projects adopts a [feature branch workflow](https://about.gitlab.com/topics
 <!-- omit in toc -->
 ### Commit messages
 
-Commit messages should adhere to the following good practices:
+This project uses [Conventional Commits](https://www.conventionalcommits.org/). Commit messages and pull request titles must follow the format `<type>(<optional scope>): <description>`, where the type is one of `feat`, `fix`, `docs`, `test`, `ci`, `refactor`, `perf`, `chore` or `revert`. Pull request titles are checked automatically in CI.
+
+Commit messages should also adhere to the following good practices:
 
 - Limit the subject line to 50 characters.
 - Capitalize the subject line.
