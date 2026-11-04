@@ -13,10 +13,8 @@ services:
     stdin_open: true
     tty: true
     user: ${USERID:-1000}:${GROUPID:-1000}
-    privileged: true
     volumes:
       - ..:/home/developer/ws/src/project
-      - /dev:/dev
       - /tmp:/tmp:rw
       - svdsim_persistence:/home/developer/ws/persistence
     ports:
