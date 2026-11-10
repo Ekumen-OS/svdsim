@@ -16,13 +16,13 @@
 #include <gtest/gtest.h>
 
 // Basic test to verify that the test infrastructure is working
-TEST(MonacoF1SimServerBasicTest, TruthIsTrue) {
+TEST(SvdsimServerBasicTest, TruthIsTrue) {
   // Arrange & Act & Assert
   ASSERT_TRUE(true);
 }
 
 // Test to verify that basic arithmetic works
-TEST(MonacoF1SimServerBasicTest, BasicArithmetic) {
+TEST(SvdsimServerBasicTest, BasicArithmetic) {
   // Arrange
   const int a = 2;
   const int b = 3;

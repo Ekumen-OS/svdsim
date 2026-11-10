@@ -23,7 +23,7 @@ namespace svdsim_server {
 class SprungMassInclinationModelTest : public ::testing::Test {
  protected:
   void SetUp() override {
-    // Vehicle parameters from monacof1_system_configuration/config/vehicle_params.yaml
+    // Vehicle parameters of a RoboRacer-class vehicle
     params_.wheelbase = 0.3300;                // m
     params_.front_track_width = 0.2360;        // m (front_axle_width)
     params_.rear_track_width = 0.2360;         // m (rear_axle_width)
