@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef MONACOF1_SIM_SERVER_TRAJECTORY_LOG_HPP_
-#define MONACOF1_SIM_SERVER_TRAJECTORY_LOG_HPP_
+#ifndef SVDSIM_SERVER_TRAJECTORY_BUFFER_HPP_
+#define SVDSIM_SERVER_TRAJECTORY_BUFFER_HPP_
 
 #include <deque>
 #include <optional>
@@ -80,4 +80,4 @@ class TrajectoryBuffer {
 
 }  // namespace svdsim_server
 
-#endif  // MONACOF1_SIM_SERVER_TRAJECTORY_LOG_HPP_
+#endif  // SVDSIM_SERVER_TRAJECTORY_BUFFER_HPP_

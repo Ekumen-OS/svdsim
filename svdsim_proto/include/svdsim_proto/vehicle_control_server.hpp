@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef MONACOF1_SIM_PROTO_COMMUNICATION_VEHICLE_CONTROL_SERVER_HPP_
-#define MONACOF1_SIM_PROTO_COMMUNICATION_VEHICLE_CONTROL_SERVER_HPP_
+#ifndef SVDSIM_PROTO_VEHICLE_CONTROL_SERVER_HPP_
+#define SVDSIM_PROTO_VEHICLE_CONTROL_SERVER_HPP_
 
 // Standard library
 #include <functional>
@@ -86,4 +86,4 @@ class VehicleControlServer {
 
 }  // namespace svdsim_proto
 
-#endif  // MONACOF1_SIM_PROTO_COMMUNICATION_VEHICLE_CONTROL_SERVER_HPP_
+#endif  // SVDSIM_PROTO_VEHICLE_CONTROL_SERVER_HPP_

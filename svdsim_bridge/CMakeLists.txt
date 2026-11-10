@@ -57,7 +57,7 @@ ament_target_dependencies(${PROJECT_NAME}
 
 # Register the component
 rclcpp_components_register_nodes(${PROJECT_NAME}
-  "svdsim_bridge::MonacoF1SimBridgeNode"
+  "svdsim_bridge::SvdsimBridgeNode"
 )
 
 # Create executable node

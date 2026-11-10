@@ -1,22 +1,21 @@
-# GitHub Copilot Instructions for Monaco RoboRacer
+# GitHub Copilot Instructions for SVDSim
 
-**📁 Primary Context Location: `/.agents/instructions.md`**
+SVDSim is a standalone ROS 2 simulator for autonomous racing development. This
+repository contains the simulation server, the ROS 2 bridge, the message
+definitions, and the protobuf/ZMQ communication libraries.
 
-Please refer to the comprehensive AI agent instructions in the `.agents/` folder for complete project context, coding guidelines, and development patterns.
+## Packages
 
-## Quick Reference
-
-- **Main Instructions**: `/.agents/instructions.md` - Complete project context and guidelines
-- **Code Templates**: `/.agents/templates/` - ROS 2 component nodes, launch files, package.xml
-- **Project Type**: ROS 2 Humble autonomous racing system
-- **Platforms**: AutoDRIVE, Isaac Sim, F1TENTH Gym, Real Hardware
+- `svdsim_server` - 2D physics simulation, vehicle dynamics, and sensor models
+- `svdsim_bridge` - ROS 2 bridge between the ZMQ/protobuf server and ROS 2 topics
+- `svdsim_msgs` - ROS 2 message definitions
+- `svdsim_proto` - Protocol buffer definitions and ZMQ vehicle control libraries
 
 ## Key Points for Copilot
 
-- Follow ROS 2 component-based architecture patterns
-- Prioritize real-time performance (Navigation 20Hz, Control 50Hz)
-- Ensure multi-platform compatibility across simulation and hardware
-- Use modern C++17 with Google style and Python 3.8+ with type hints
+- Target ROS 2 Jazzy on Ubuntu 24.04
+- Follow the ROS 2 component-based architecture (`rclcpp_components`)
+- Keep the simulation loop deterministic and real-time friendly
+- Use modern C++17 with Google style, `clang-format`, and the `pre-commit` hooks
+- Keep the simulator usable both standalone and as a library from downstream projects
 - Always include proper error handling and parameter validation
-
-**For complete development guidelines, architecture details, and coding standards, see `/.agents/instructions.md`**

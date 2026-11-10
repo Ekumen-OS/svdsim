@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef MONACOF1_SIM_SERVER_ECS_SYSTEMS_collision_count_systemHPP_
-#define MONACOF1_SIM_SERVER_ECS_SYSTEMS_collision_count_systemHPP_
+#ifndef SVDSIM_SERVER_ECS_SYSTEMS_COLLISION_COUNT_SYSTEM_HPP_
+#define SVDSIM_SERVER_ECS_SYSTEMS_COLLISION_COUNT_SYSTEM_HPP_
 
 // Standard library
 #include <map>
@@ -90,4 +90,4 @@ class CollisionCountSystem : public SystemInterface {
 
 }  // namespace svdsim_server
 
-#endif  // MONACOF1_SIM_SERVER_ECS_SYSTEMS_collision_count_systemHPP_
+#endif  // SVDSIM_SERVER_ECS_SYSTEMS_COLLISION_COUNT_SYSTEM_HPP_

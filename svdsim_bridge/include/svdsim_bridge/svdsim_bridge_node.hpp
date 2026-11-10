@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef MONACOF1_SIM_BRIDGE__MONACOF1_SIM_BRIDGE_NODE_HPP_
-#define MONACOF1_SIM_BRIDGE__MONACOF1_SIM_BRIDGE_NODE_HPP_
+#ifndef SVDSIM_BRIDGE__SVDSIM_BRIDGE_NODE_HPP_
+#define SVDSIM_BRIDGE__SVDSIM_BRIDGE_NODE_HPP_
 
 #include <atomic>
 #include <map>
@@ -45,24 +45,24 @@ namespace svdsim_bridge {
 /**
  * @brief Bridge node between ZMQ/protobuf simulation server and ROS 2
  *
- * This node provides bidirectional communication between the Monaco F1TENTH
+ * This node provides bidirectional communication between the SVDSim
  * simulation server (via ZMQ/protobuf) and ROS 2 topics. It runs two threads:
  * - Main thread: Services ROS callbacks
  * - ZMQ thread: Polls and processes incoming protobuf messages
  */
-class MonacoF1SimBridgeNode : public rclcpp::Node {
+class SvdsimBridgeNode : public rclcpp::Node {
  public:
   /**
-   * @brief Construct a new Monaco F1 Sim Bridge Node
+   * @brief Construct a new SVDSim bridge node
    *
    * @param options Node options for configuration
    */
-  explicit MonacoF1SimBridgeNode(const rclcpp::NodeOptions& options = rclcpp::NodeOptions());
+  explicit SvdsimBridgeNode(const rclcpp::NodeOptions& options = rclcpp::NodeOptions());
 
   /**
    * @brief Destructor - ensures clean shutdown of threads
    */
-  ~MonacoF1SimBridgeNode() override;
+  ~SvdsimBridgeNode() override;
 
  private:
   /**
@@ -247,4 +247,4 @@ class MonacoF1SimBridgeNode : public rclcpp::Node {
 
 }  // namespace svdsim_bridge
 
-#endif  // MONACOF1_SIM_BRIDGE__MONACOF1_SIM_BRIDGE_NODE_HPP_
+#endif  // SVDSIM_BRIDGE__SVDSIM_BRIDGE_NODE_HPP_

@@ -26,8 +26,8 @@ int main(int argc, char* argv[]) {
   rclcpp::init(argc, argv);
 
   try {
-    // Instantiate the MonacoF1SimServerNode
-    auto node = std::make_shared<svdsim_server::MonacoF1SimServerNode>();
+    // Instantiate the SvdsimServerNode
+    auto node = std::make_shared<svdsim_server::SvdsimServerNode>();
 
     // Spin the node to process callbacks (simulation runs via timer)
     rclcpp::spin(node);

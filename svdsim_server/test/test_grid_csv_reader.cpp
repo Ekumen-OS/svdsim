@@ -451,7 +451,7 @@ TEST_F(GridCsvReaderTest, ParseMixedVehicleTypes) {
   // Arrange
   std::stringstream ss;
   ss << "id,initx,inity,inityaw,port,type\n";
-  ss << "monacof1,0.0,0.0,0.0,9999,remote\n";
+  ss << "vehicle1,0.0,0.0,0.0,9999,remote\n";
   ss << "ghost,2.0,0.0,0.0,9998,sparring\n";
 
   // Act
@@ -459,7 +459,7 @@ TEST_F(GridCsvReaderTest, ParseMixedVehicleTypes) {
 
   // Assert
   ASSERT_EQ(entries.size(), 2);
-  EXPECT_EQ(entries[0].id, "monacof1");
+  EXPECT_EQ(entries[0].id, "vehicle1");
   EXPECT_EQ(entries[0].type, VehicleType::REMOTE);
   EXPECT_EQ(entries[1].id, "ghost");
   EXPECT_EQ(entries[1].type, VehicleType::SPARRING);

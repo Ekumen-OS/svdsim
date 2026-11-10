@@ -3,7 +3,7 @@
 <package format="3">
   <name>svdsim_msgs</name>
   <version>1.0.0</version>
-  <description>Monaco F1TENTH simulation bridge ROS 2 message definitions</description>
+  <description>ROS 2 message definitions for the SVDSim simulation bridge</description>
   <maintainer email="glpuga@ekumenlabs.com">Gerardo Puga</maintainer>
   <license>Apache-2.0</license>
   <author email="glpuga@ekumenlabs.com">Gerardo Puga</author>

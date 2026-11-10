@@ -128,7 +128,7 @@ target_link_libraries(${PROJECT_NAME}
 
 # Register the component
 rclcpp_components_register_nodes(${PROJECT_NAME}
-  "svdsim_server::MonacoF1SimServerNode"
+  "svdsim_server::SvdsimServerNode"
 )
 
 # Create executable node

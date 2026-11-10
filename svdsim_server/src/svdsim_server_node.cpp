@@ -64,7 +64,7 @@
 
 namespace svdsim_server {
 
-MonacoF1SimServerNode::MonacoF1SimServerNode(const rclcpp::NodeOptions& options) : Node("svdsim_server", options) {
+SvdsimServerNode::SvdsimServerNode(const rclcpp::NodeOptions& options) : Node("svdsim_server", options) {
   declare_parameters();
   load_parameters();
 
@@ -94,12 +94,12 @@ MonacoF1SimServerNode::MonacoF1SimServerNode(const rclcpp::NodeOptions& options)
 
   start();
 
-  RCLCPP_INFO(this->get_logger(), "MonacoF1SimServer node initialized");
+  RCLCPP_INFO(this->get_logger(), "SVDSim server node initialized");
   RCLCPP_INFO(this->get_logger(), "Dependencies loaded: Protobuf, EnTT, ZeroMQ");
 }
 
-MonacoF1SimServerNode::~MonacoF1SimServerNode() {
-  RCLCPP_INFO(this->get_logger(), "Shutting down MonacoF1SimServer node");
+SvdsimServerNode::~SvdsimServerNode() {
+  RCLCPP_INFO(this->get_logger(), "Shutting down SVDSim server node");
 
   // Signal simulation thread to stop
   running_ = false;
@@ -111,7 +111,7 @@ MonacoF1SimServerNode::~MonacoF1SimServerNode() {
   }
 }
 
-void MonacoF1SimServerNode::declare_parameters() {
+void SvdsimServerNode::declare_parameters() {
   // Declare top-level parameters with descriptors
   auto physics_rate_desc = rcl_interfaces::msg::ParameterDescriptor{};
   physics_rate_desc.description = "Physics simulation update rate [Hz]";
@@ -602,7 +602,7 @@ void MonacoF1SimServerNode::declare_parameters() {
   this->declare_parameter("rtf_report_interval", 3.0, rtf_report_interval_desc);
 }
 
-void MonacoF1SimServerNode::load_parameters() {
+void SvdsimServerNode::load_parameters() {
   // Load top-level parameters
   physics_rate_ = this->get_parameter("physics_rate").as_double();
   command_rate_ = this->get_parameter("command_rate").as_double();
@@ -880,7 +880,7 @@ void MonacoF1SimServerNode::load_parameters() {
   RCLCPP_INFO(this->get_logger(), "  rear_distance: %.3f m", footprint_rear_distance_);
 }
 
-void MonacoF1SimServerNode::setup_entities() {
+void SvdsimServerNode::setup_entities() {
   RCLCPP_INFO(this->get_logger(), "Setting up vehicle entities...");
 
   // Create an entity for each vehicle in the grid CSV
@@ -912,7 +912,7 @@ void MonacoF1SimServerNode::setup_entities() {
   RCLCPP_INFO(this->get_logger(), "Created %zu vehicle entities", vehicle_entities_.size());
 }
 
-void MonacoF1SimServerNode::setup_systems() {
+void SvdsimServerNode::setup_systems() {
   RCLCPP_INFO(this->get_logger(), "Setting up ECS systems...");
 
   // Get simulation clock for initial timestamps
@@ -979,12 +979,12 @@ void MonacoF1SimServerNode::setup_systems() {
       this->get_logger(), "Initialized %zu systems (%zu in activation queue)", systems_.size() + 1, systems_.size());
 }
 
-double MonacoF1SimServerNode::calculate_total_mass() const {
+double SvdsimServerNode::calculate_total_mass() const {
   // Total mass = sprung mass + 4 tires * unsprung mass per tire
   return sprung_mass_ + 4.0 * unsprung_mass_;
 }
 
-std::unique_ptr<TireModelInterface> MonacoF1SimServerNode::create_tire_model() {
+std::unique_ptr<TireModelInterface> SvdsimServerNode::create_tire_model() {
   if (tire_model_ == "modified_nicolas_comstock") {
     TireModelParams tire_params;
     tire_params.lateral.B = tire_lateral_stiffness_factor_B_;
@@ -1005,7 +1005,7 @@ std::unique_ptr<TireModelInterface> MonacoF1SimServerNode::create_tire_model() {
   }
 }
 
-std::unique_ptr<SingleTrackModelInterface> MonacoF1SimServerNode::create_single_track_model() {
+std::unique_ptr<SingleTrackModelInterface> SvdsimServerNode::create_single_track_model() {
   if (dynamic_model_ == "single_track_kinematic") {
     // Create kinematic model
     SingleTrackKinematicParams params;
@@ -1044,7 +1044,7 @@ std::unique_ptr<SingleTrackModelInterface> MonacoF1SimServerNode::create_single_
   }
 }
 
-entt::entity MonacoF1SimServerNode::create_user_controlled_vehicle(
+entt::entity SvdsimServerNode::create_user_controlled_vehicle(
     const std::string& vehicle_name,
     double init_x,
     double init_y,
@@ -1189,7 +1189,7 @@ entt::entity MonacoF1SimServerNode::create_user_controlled_vehicle(
   return entity;
 }
 
-entt::entity MonacoF1SimServerNode::create_sparring_vehicle(
+entt::entity SvdsimServerNode::create_sparring_vehicle(
     const std::string& vehicle_name,
     double init_x,
     double init_y,
@@ -1286,17 +1286,17 @@ entt::entity MonacoF1SimServerNode::create_sparring_vehicle(
   return entity;
 }
 
-void MonacoF1SimServerNode::start() {
+void SvdsimServerNode::start() {
   RCLCPP_INFO(this->get_logger(), "Starting simulation with dedicated thread execution");
 
   // Start simulation runner thread
   running_ = true;
-  simulation_thread_ = std::thread(&MonacoF1SimServerNode::simulation_loop, this);
+  simulation_thread_ = std::thread(&SvdsimServerNode::simulation_loop, this);
 
   RCLCPP_INFO(this->get_logger(), "Simulation thread started");
 }
 
-void MonacoF1SimServerNode::simulation_loop() {
+void SvdsimServerNode::simulation_loop() {
   RCLCPP_INFO(this->get_logger(), "Simulation loop started");
 
   auto& sim_clock = registry_.ctx().get<SimulationClock>();
@@ -1402,4 +1402,4 @@ void MonacoF1SimServerNode::simulation_loop() {
 }  // namespace svdsim_server
 
 #include "rclcpp_components/register_node_macro.hpp"
-RCLCPP_COMPONENTS_REGISTER_NODE(svdsim_server::MonacoF1SimServerNode)
+RCLCPP_COMPONENTS_REGISTER_NODE(svdsim_server::SvdsimServerNode)

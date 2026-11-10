@@ -18,7 +18,7 @@
 
 namespace svdsim_bridge {
 
-MonacoF1SimBridgeNode::MonacoF1SimBridgeNode(const rclcpp::NodeOptions& options)
+SvdsimBridgeNode::SvdsimBridgeNode(const rclcpp::NodeOptions& options)
     : Node("svdsim_bridge", options), running_(false) {
   // Declare and get parameters
   this->declare_parameter("hostname", "localhost");
@@ -35,7 +35,7 @@ MonacoF1SimBridgeNode::MonacoF1SimBridgeNode(const rclcpp::NodeOptions& options)
   map_frame_id_ = this->get_parameter("map_frame_id").as_string();
   base_link_frame_id_ = this->get_parameter("base_link_frame_id").as_string();
 
-  RCLCPP_INFO(this->get_logger(), "Monaco F1TENTH Simulation Bridge Node initialized");
+  RCLCPP_INFO(this->get_logger(), "SVDSim bridge node initialized");
   RCLCPP_INFO(this->get_logger(), "  Connecting to: %s:%d", hostname_.c_str(), port_);
   RCLCPP_INFO(this->get_logger(), "  Lidar frame_id: %s", lidar_frame_id_.c_str());
   RCLCPP_INFO(this->get_logger(), "  IMU frame_id: %s", imu_frame_id_.c_str());
@@ -56,32 +56,30 @@ MonacoF1SimBridgeNode::MonacoF1SimBridgeNode(const rclcpp::NodeOptions& options)
 
   // Create timer for publishing sparring markers at 10 Hz
   sparring_marker_timer_ = this->create_wall_timer(
-      std::chrono::milliseconds(100), std::bind(&MonacoF1SimBridgeNode::publish_sparring_markers_timer_callback, this));
+      std::chrono::milliseconds(100), std::bind(&SvdsimBridgeNode::publish_sparring_markers_timer_callback, this));
   collision_data_publisher_ =
       this->create_publisher<svdsim_msgs::msg::CollisionData>("collision_data", rclcpp::QoS(10).transient_local());
 
   // Initialize ROS subscribers with default QoS
   steering_command_subscriber_ = this->create_subscription<svdsim_msgs::msg::StampedSteering>(
-      "steering_command", 10,
-      std::bind(&MonacoF1SimBridgeNode::steering_command_callback, this, std::placeholders::_1));
+      "steering_command", 10, std::bind(&SvdsimBridgeNode::steering_command_callback, this, std::placeholders::_1));
   velocity_command_subscriber_ = this->create_subscription<svdsim_msgs::msg::StampedVelocity>(
-      "velocity_command", 10,
-      std::bind(&MonacoF1SimBridgeNode::velocity_command_callback, this, std::placeholders::_1));
+      "velocity_command", 10, std::bind(&SvdsimBridgeNode::velocity_command_callback, this, std::placeholders::_1));
   initialpose_subscriber_ = this->create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>(
-      "initialpose", 10, std::bind(&MonacoF1SimBridgeNode::reset_pose_callback, this, std::placeholders::_1));
+      "initialpose", 10, std::bind(&SvdsimBridgeNode::reset_pose_callback, this, std::placeholders::_1));
 
   // Initialize ZMQ client
   initialize_zmq_client();
 
   // Start ZMQ spinner thread
   running_ = true;
-  zmq_thread_ = std::thread(&MonacoF1SimBridgeNode::zmq_spinner_thread, this);
+  zmq_thread_ = std::thread(&SvdsimBridgeNode::zmq_spinner_thread, this);
 
   RCLCPP_INFO(this->get_logger(), "ZMQ spinner thread started");
 }
 
-MonacoF1SimBridgeNode::~MonacoF1SimBridgeNode() {
-  RCLCPP_INFO(this->get_logger(), "Shutting down Monaco F1TENTH Simulation Bridge Node");
+SvdsimBridgeNode::~SvdsimBridgeNode() {
+  RCLCPP_INFO(this->get_logger(), "Shutting down SVDSim bridge node");
 
   // Signal thread to stop
   running_ = false;
@@ -94,13 +92,12 @@ MonacoF1SimBridgeNode::~MonacoF1SimBridgeNode() {
   RCLCPP_INFO(this->get_logger(), "Bridge node shutdown complete");
 }
 
-void MonacoF1SimBridgeNode::initialize_zmq_client() {
+void SvdsimBridgeNode::initialize_zmq_client() {
   try {
     zmq_client_ = std::make_unique<svdsim_proto::VehicleControlClient>(hostname_, port_);
 
     // Set callback for incoming protobuf messages
-    zmq_client_->set_callback(
-        std::bind(&MonacoF1SimBridgeNode::on_proto_message_received, this, std::placeholders::_1));
+    zmq_client_->set_callback(std::bind(&SvdsimBridgeNode::on_proto_message_received, this, std::placeholders::_1));
 
     RCLCPP_INFO(this->get_logger(), "ZMQ client initialized successfully");
   } catch (const std::exception& e) {
@@ -109,7 +106,7 @@ void MonacoF1SimBridgeNode::initialize_zmq_client() {
   }
 }
 
-void MonacoF1SimBridgeNode::zmq_spinner_thread() {
+void SvdsimBridgeNode::zmq_spinner_thread() {
   RCLCPP_DEBUG(this->get_logger(), "ZMQ spinner thread running");
 
   constexpr int kPollTimeoutMs = 20;
@@ -126,7 +123,7 @@ void MonacoF1SimBridgeNode::zmq_spinner_thread() {
   RCLCPP_DEBUG(this->get_logger(), "ZMQ spinner thread exiting");
 }
 
-builtin_interfaces::msg::Time MonacoF1SimBridgeNode::proto_timestamp_to_ros(
+builtin_interfaces::msg::Time SvdsimBridgeNode::proto_timestamp_to_ros(
     const svdsim_server::Timestamp& timestamp) const {
   builtin_interfaces::msg::Time ros_time;
   ros_time.sec = static_cast<int32_t>(timestamp.seconds());
@@ -134,7 +131,7 @@ builtin_interfaces::msg::Time MonacoF1SimBridgeNode::proto_timestamp_to_ros(
   return ros_time;
 }
 
-void MonacoF1SimBridgeNode::publish_clock_message(const svdsim_server::Timestamp& timestamp) {
+void SvdsimBridgeNode::publish_clock_message(const svdsim_server::Timestamp& timestamp) {
   rosgraph_msgs::msg::Clock clock_msg;
   clock_msg.clock = proto_timestamp_to_ros(timestamp);
 
@@ -143,7 +140,7 @@ void MonacoF1SimBridgeNode::publish_clock_message(const svdsim_server::Timestamp
   RCLCPP_DEBUG(this->get_logger(), "Published clock: %d.%09u", clock_msg.clock.sec, clock_msg.clock.nanosec);
 }
 
-void MonacoF1SimBridgeNode::on_proto_message_received(const svdsim_server::SimDataMessage& message) {
+void SvdsimBridgeNode::on_proto_message_received(const svdsim_server::SimDataMessage& message) {
   // Process broadcast timestamp messages
   if (message.has_server_outbound() && message.has_timestamp()) {
     const auto& outbound = message.server_outbound();
@@ -180,7 +177,7 @@ void MonacoF1SimBridgeNode::on_proto_message_received(const svdsim_server::SimDa
   }
 }
 
-void MonacoF1SimBridgeNode::publish_steering_feedback(
+void SvdsimBridgeNode::publish_steering_feedback(
     const svdsim_server::SteeringFeedback& steering_feedback,
     const svdsim_server::Timestamp& timestamp) {
   svdsim_msgs::msg::StampedSteering msg;
@@ -194,7 +191,7 @@ void MonacoF1SimBridgeNode::publish_steering_feedback(
   steering_feedback_publisher_->publish(msg);
 }
 
-void MonacoF1SimBridgeNode::publish_encoder_data(
+void SvdsimBridgeNode::publish_encoder_data(
     const svdsim_server::WheelEncoderData& encoder_data,
     const svdsim_server::Timestamp& timestamp) {
   svdsim_msgs::msg::StampedEncoderData msg;
@@ -209,7 +206,7 @@ void MonacoF1SimBridgeNode::publish_encoder_data(
   encoder_data_publisher_->publish(msg);
 }
 
-void MonacoF1SimBridgeNode::publish_lidar_scan(
+void SvdsimBridgeNode::publish_lidar_scan(
     const svdsim_server::LidarScanData& lidar_data,
     const svdsim_server::Timestamp& timestamp) {
   sensor_msgs::msg::LaserScan msg;
@@ -240,7 +237,7 @@ void MonacoF1SimBridgeNode::publish_lidar_scan(
   scan_publisher_->publish(msg);
 }
 
-void MonacoF1SimBridgeNode::publish_imu_sample(
+void SvdsimBridgeNode::publish_imu_sample(
     const svdsim_server::IMUSampleData& imu_data,
     const svdsim_server::Timestamp& timestamp) {
   sensor_msgs::msg::Imu msg;
@@ -273,7 +270,7 @@ void MonacoF1SimBridgeNode::publish_imu_sample(
   imu_publisher_->publish(msg);
 }
 
-void MonacoF1SimBridgeNode::publish_magnetometer(
+void SvdsimBridgeNode::publish_magnetometer(
     const svdsim_server::IMUSampleData& imu_data,
     const svdsim_server::Timestamp& timestamp) {
   sensor_msgs::msg::MagneticField msg;
@@ -296,7 +293,7 @@ void MonacoF1SimBridgeNode::publish_magnetometer(
   magnetometer_publisher_->publish(msg);
 }
 
-void MonacoF1SimBridgeNode::publish_ground_truth(
+void SvdsimBridgeNode::publish_ground_truth(
     const svdsim_server::GroundTruthData& ground_truth_data,
     const svdsim_server::Timestamp& timestamp) {
   nav_msgs::msg::Odometry msg;
@@ -329,7 +326,7 @@ void MonacoF1SimBridgeNode::publish_ground_truth(
   ground_truth_publisher_->publish(msg);
 }
 
-void MonacoF1SimBridgeNode::publish_sparring_markers_timer_callback() {
+void SvdsimBridgeNode::publish_sparring_markers_timer_callback() {
   std::lock_guard<std::mutex> lock(marker_cache_mutex_);
 
   // Early return if no markers to publish
@@ -353,7 +350,7 @@ void MonacoF1SimBridgeNode::publish_sparring_markers_timer_callback() {
   sparring_markers_publisher_->publish(marker_array);
 }
 
-void MonacoF1SimBridgeNode::publish_sparring_pose_marker(
+void SvdsimBridgeNode::publish_sparring_pose_marker(
     const svdsim_server::SparringPoseMarker& pose_marker_data,
     const svdsim_server::Timestamp& timestamp) {
   visualization_msgs::msg::Marker marker;
@@ -396,7 +393,7 @@ void MonacoF1SimBridgeNode::publish_sparring_pose_marker(
   cached_pose_markers_[pose_marker_data.entity_id()] = marker;
 }
 
-void MonacoF1SimBridgeNode::publish_sparring_lookahead_marker(
+void SvdsimBridgeNode::publish_sparring_lookahead_marker(
     const svdsim_server::SparringLookaheadMarker& lookahead_marker_data,
     const svdsim_server::Timestamp& timestamp) {
   visualization_msgs::msg::Marker marker;
@@ -436,7 +433,7 @@ void MonacoF1SimBridgeNode::publish_sparring_lookahead_marker(
   cached_lookahead_markers_[lookahead_marker_data.entity_id()] = marker;
 }
 
-void MonacoF1SimBridgeNode::publish_collision_data(const svdsim_server::CollisionCountData& collision_count_data) {
+void SvdsimBridgeNode::publish_collision_data(const svdsim_server::CollisionCountData& collision_count_data) {
   svdsim_msgs::msg::CollisionData msg;
   msg.obstacle_collision_count = collision_count_data.obstacle_collision_count();
   msg.vehicle_collision_count = collision_count_data.vehicle_collision_count();
@@ -445,7 +442,7 @@ void MonacoF1SimBridgeNode::publish_collision_data(const svdsim_server::Collisio
   collision_data_publisher_->publish(msg);
 }
 
-void MonacoF1SimBridgeNode::steering_command_callback(const svdsim_msgs::msg::StampedSteering::SharedPtr msg) {
+void SvdsimBridgeNode::steering_command_callback(const svdsim_msgs::msg::StampedSteering::SharedPtr msg) {
   // Create proto message
   svdsim_server::SimDataMessage proto_msg;
 
@@ -460,7 +457,7 @@ void MonacoF1SimBridgeNode::steering_command_callback(const svdsim_msgs::msg::St
   }
 }
 
-void MonacoF1SimBridgeNode::velocity_command_callback(const svdsim_msgs::msg::StampedVelocity::SharedPtr msg) {
+void SvdsimBridgeNode::velocity_command_callback(const svdsim_msgs::msg::StampedVelocity::SharedPtr msg) {
   // Create proto message
   svdsim_server::SimDataMessage proto_msg;
 
@@ -475,7 +472,7 @@ void MonacoF1SimBridgeNode::velocity_command_callback(const svdsim_msgs::msg::St
   }
 }
 
-void MonacoF1SimBridgeNode::reset_pose_callback(const geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr msg) {
+void SvdsimBridgeNode::reset_pose_callback(const geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr msg) {
   // Validate frame_id
   if (msg->header.frame_id != map_frame_id_) {
     RCLCPP_ERROR(
@@ -515,4 +512,4 @@ void MonacoF1SimBridgeNode::reset_pose_callback(const geometry_msgs::msg::PoseWi
 }  // namespace svdsim_bridge
 
 #include "rclcpp_components/register_node_macro.hpp"
-RCLCPP_COMPONENTS_REGISTER_NODE(svdsim_bridge::MonacoF1SimBridgeNode)
+RCLCPP_COMPONENTS_REGISTER_NODE(svdsim_bridge::SvdsimBridgeNode)

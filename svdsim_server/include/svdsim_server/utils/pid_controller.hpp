@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef MONACOF1_SIM_SERVER_UTILS_PID_CONTROLLER_HPP_
-#define MONACOF1_SIM_SERVER_UTILS_PID_CONTROLLER_HPP_
+#ifndef SVDSIM_SERVER_UTILS_PID_CONTROLLER_HPP_
+#define SVDSIM_SERVER_UTILS_PID_CONTROLLER_HPP_
 
 #include <limits>
 
@@ -89,4 +89,4 @@ class PIDController {
 
 }  // namespace svdsim_server
 
-#endif  // MONACOF1_SIM_SERVER_UTILS_PID_CONTROLLER_HPP_
+#endif  // SVDSIM_SERVER_UTILS_PID_CONTROLLER_HPP_

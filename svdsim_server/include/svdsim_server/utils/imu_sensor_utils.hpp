@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef MONACOF1_SIM_SERVER_UTILS_IMU_SENSOR_UTILS_HPP_
-#define MONACOF1_SIM_SERVER_UTILS_IMU_SENSOR_UTILS_HPP_
+#ifndef SVDSIM_SERVER_UTILS_IMU_SENSOR_UTILS_HPP_
+#define SVDSIM_SERVER_UTILS_IMU_SENSOR_UTILS_HPP_
 
 #include <Eigen/Core>
 #include <sophus/se2.hpp>
@@ -103,4 +103,4 @@ ImuSamplingInputs prepare_imu_sampling_inputs(
 
 }  // namespace svdsim_server
 
-#endif  // MONACOF1_SIM_SERVER_UTILS_IMU_SENSOR_UTILS_HPP_
+#endif  // SVDSIM_SERVER_UTILS_IMU_SENSOR_UTILS_HPP_
