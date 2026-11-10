@@ -1,0 +1,153 @@
+# Copyright 2026 Ekumen
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Reference configuration for the `svdsim_server` node.
+#
+# Every parameter below is set to the value that the node declares in
+# `declare_parameters()` (svd_simulator/svdsim_server/src/svdsim_server_node.cpp).
+# The file is therefore a complete list of the node parameters at their defaults:
+# omitting a key from a configuration file has the same effect as setting it to
+# the value shown here.
+#
+# `map_path` and `grid_listing_file` are empty by default. The node refuses to
+# start until both are set, and the values must be absolute paths:
+#   map_path:          /path/to/map.yaml        (map_server-style YAML)
+#   grid_listing_file: /path/to/vehicle_grid.csv
+#
+# Launch with:
+#   ros2 run svdsim_server svdsim_server_node --ros-args \
+#     --params-file documentation/svd_simulator/config_examples/svdsim_server_default.yaml
+
+svdsim_server:
+  ros__parameters:
+    # Simulation rate parameters
+    physics_rate: 1000.0
+    command_rate: 20.0
+    odometry_rate: 20.0
+    ground_truth_rate: 100.0
+    rtf_report_interval: 3.0
+
+    # Map and grid configuration
+    map_path: ""
+    grid_listing_file: ""
+
+    # LiDAR parameters
+    lidar:
+      horizontal_fov: 4.712
+      horizontal_resolution: 0.00873
+      scan_rate: 20.0
+      max_distance: 10.0
+      min_distance: 0.1
+      range_noise_stddev: 0.01
+      enable_skew: true
+      x_offset: 0.0
+      y_offset: 0.0
+      yaw_offset: 0.0
+
+    # Wheel encoder parameters
+    wheel_encoders:
+      pulses_per_revolution: 4096.0
+      conversion_ratio: 1.0
+
+    # Steering feedback source
+    use_true_steering_feedback_sensor: true
+
+    # IMU sensor parameters
+    imu:
+      sample_rate: 100.0
+      gravity: 9.81
+      x_offset: 0.0
+      y_offset: 0.0
+      z_offset: 0.05
+      roll_offset: 0.0
+      pitch_offset: 0.0
+      yaw_offset: 0.0
+      accelerometer_noise_density: 1.40e-02
+      accelerometer_random_walk: 4.45e-04
+      gyroscope_noise_density: 1.75e-03
+      gyroscope_random_walk: 1.05e-05
+      magnetometer_noise_density: 1.35e-06
+      accelerometer_tau: 3600.0
+      gyroscope_tau: 3600.0
+      magnetometer_tau: 300.0
+      initial_accelerometer_bias_x: 0.0
+      initial_accelerometer_bias_y: 0.0
+      initial_accelerometer_bias_z: 0.0
+      initial_gyroscope_bias_x: 0.0
+      initial_gyroscope_bias_y: 0.0
+      initial_gyroscope_bias_z: 0.0
+      initial_magnetometer_bias_x: 0.0
+      initial_magnetometer_bias_y: 0.0
+      initial_magnetometer_bias_z: 0.0
+
+    # Tire model parameters
+    tires:
+      model: "modified_nicolas_comstock"
+      combined_slip: true
+      longitudinal:
+        Dn: 1.0
+        B: 8.0
+        C: 2.1
+        E: 0.97
+      lateral:
+        Dn: 1.0
+        B: 0.1
+        C: 1.7
+        E: -1.6
+
+    # Vehicle dynamics parameters
+    vehicle_dynamics:
+      dynamic_model: "single_track_kinematic"
+      wheelbase: 0.3
+      rear_track_width: 0.2
+      front_track_width: 0.2
+      effective_wheel_radius: 0.05
+      sprung_mass: 3.47
+      unsprung_mass: 0.109
+      center_of_mass_x: 0.15
+      center_of_mass_z: 0.04684
+      yaw_inertia: 0.04712
+      wheel_inertia: 0.00028
+      engine_torque_split: 0.5
+      brake_torque_split: 0.5
+      steering_max: 0.6
+      steering_min: -0.6
+      steering_velocity_max: 3.2
+      steering_hysteresis_gap: 0.0
+      acceleration_max: 7.0
+      velocity_max: 5.0
+      velocity_min: -2.0
+      velocity_switch: 3.5
+      braking_deceleration: 9.0
+      motor_drive_rise_time: 0.1
+      velocity_deadband: 0.0
+
+    # Suspension simulation parameters
+    suspension:
+      spring_stiffness: 500.0
+      roll_center_height: 0.0325
+      max_inclination_angle: 0.174533
+
+    # Vehicle footprint parameters
+    vehicle_footprint:
+      width: 0.3
+      front_distance: 0.3
+      rear_distance: 0.3
+
+    # Sparring vehicle parameters
+    sparring:
+      trajectory_file: ""
+      constant_velocity: 2.5
+      lookahead_distance: 0.8
+      max_steering: 0.6
