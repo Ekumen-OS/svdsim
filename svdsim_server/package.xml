@@ -3,7 +3,7 @@
 <package format="3">
   <name>svdsim_server</name>
   <version>1.0.0</version>
-  <description>Monaco F1TENTH simulation server providing physics simulation and vehicle dynamics for autonomous racing development</description>
+  <description>SVDSim simulation server providing physics simulation and vehicle dynamics for autonomous racing development</description>
   <maintainer email="glpuga@ekumenlabs.com">Gerardo Puga</maintainer>
   <license>Apache-2.0</license>
   <author email="glpuga@ekumenlabs.com">Gerardo Puga</author>

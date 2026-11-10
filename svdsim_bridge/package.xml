@@ -3,7 +3,7 @@
 <package format="3">
   <name>svdsim_bridge</name>
   <version>1.0.0</version>
-  <description>Monaco F1TENTH simulation bridge providing bidirectional communication between ZMQ/protobuf simulation server and ROS 2 topics</description>
+  <description>SVDSim bridge providing bidirectional communication between the ZMQ/protobuf simulation server and ROS 2 topics</description>
   <maintainer email="glpuga@ekumenlabs.com">Gerardo Puga</maintainer>
   <license>Apache-2.0</license>
   <author email="glpuga@ekumenlabs.com">Gerardo Puga</author>

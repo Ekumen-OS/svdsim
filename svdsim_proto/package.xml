@@ -3,7 +3,7 @@
 <package format="3">
   <name>svdsim_proto</name>
   <version>1.0.0</version>
-  <description>Monaco F1TENTH simulation protocol definitions and communication libraries for ZeroMQ-based vehicle control</description>
+  <description>SVDSim protocol buffer definitions and ZeroMQ-based vehicle control communication libraries</description>
   <maintainer email="glpuga@ekumenlabs.com">Gerardo Puga</maintainer>
   <license>Apache-2.0</license>
   <author email="glpuga@ekumenlabs.com">Gerardo Puga</author>
