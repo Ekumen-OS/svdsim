@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef MONACOF1_SIM_SERVER_CONFIGURATION_GRID_CSV_READER_HPP_
-#define MONACOF1_SIM_SERVER_CONFIGURATION_GRID_CSV_READER_HPP_
+#ifndef SVDSIM_SERVER_CONFIGURATION_GRID_CSV_READER_HPP_
+#define SVDSIM_SERVER_CONFIGURATION_GRID_CSV_READER_HPP_
 
 #include <istream>
 #include <string>
@@ -85,4 +85,4 @@ class GridCsvReader {
 
 }  // namespace svdsim_server
 
-#endif  // MONACOF1_SIM_SERVER_CONFIGURATION_GRID_CSV_READER_HPP_
+#endif  // SVDSIM_SERVER_CONFIGURATION_GRID_CSV_READER_HPP_

@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef MONACOF1_SIM_SERVER_MONACOF1_SIM_SERVER_NODE_HPP_
-#define MONACOF1_SIM_SERVER_MONACOF1_SIM_SERVER_NODE_HPP_
+#ifndef SVDSIM_SERVER_SVDSIM_SERVER_NODE_HPP_
+#define SVDSIM_SERVER_SVDSIM_SERVER_NODE_HPP_
 
 // Standard library
 #include <map>
@@ -52,26 +52,26 @@
 namespace svdsim_server {
 
 /**
- * @brief Monaco F1TENTH Simulation Server Node
+ * @brief SVDSim simulation server node
  *
  * This node provides the simulation environment for autonomous racing development,
  * including physics simulation, vehicle dynamics, and sensor simulation.
  */
-class MonacoF1SimServerNode : public rclcpp::Node {
+class SvdsimServerNode : public rclcpp::Node {
  public:
   /**
-   * @brief Construct a new Monaco F1 Sim Server Node object
+   * @brief Construct a new SVDSim server node object
    *
    * @param options Node options for configuration
    */
-  explicit MonacoF1SimServerNode(const rclcpp::NodeOptions& options = rclcpp::NodeOptions());
+  explicit SvdsimServerNode(const rclcpp::NodeOptions& options = rclcpp::NodeOptions());
 
   /**
-   * @brief Destroy the Monaco F1 Sim Server Node object
+   * @brief Destroy the SVDSim server node object
    *
    * Ensures proper shutdown of the simulation thread.
    */
-  ~MonacoF1SimServerNode();
+  ~SvdsimServerNode();
 
   /**
    * @brief Initialize and start the simulation server
@@ -313,4 +313,4 @@ class MonacoF1SimServerNode : public rclcpp::Node {
 
 }  // namespace svdsim_server
 
-#endif  // MONACOF1_SIM_SERVER_MONACOF1_SIM_SERVER_NODE_HPP_
+#endif  // SVDSIM_SERVER_SVDSIM_SERVER_NODE_HPP_

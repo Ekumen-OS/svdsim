@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef MONACOF1_SIM_SERVER_EVENT_QUEUE_ACTIVATION_QUEUE_HPP_
-#define MONACOF1_SIM_SERVER_EVENT_QUEUE_ACTIVATION_QUEUE_HPP_
+#ifndef SVDSIM_SERVER_EVENT_QUEUE_ACTIVATION_QUEUE_HPP_
+#define SVDSIM_SERVER_EVENT_QUEUE_ACTIVATION_QUEUE_HPP_
 
 // Standard library
 #include <memory>
@@ -124,4 +124,4 @@ class ActivationQueue {
 
 }  // namespace svdsim_server
 
-#endif  // MONACOF1_SIM_SERVER_EVENT_QUEUE_ACTIVATION_QUEUE_HPP_
+#endif  // SVDSIM_SERVER_EVENT_QUEUE_ACTIVATION_QUEUE_HPP_

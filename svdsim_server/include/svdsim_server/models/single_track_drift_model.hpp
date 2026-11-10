@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef MONACOF1_SIM_SERVER_MODELS_SINGLE_TRACK_DRIFT_MODEL_HPP_
-#define MONACOF1_SIM_SERVER_MODELS_SINGLE_TRACK_DRIFT_MODEL_HPP_
+#ifndef SVDSIM_SERVER_MODELS_SINGLE_TRACK_DRIFT_MODEL_HPP_
+#define SVDSIM_SERVER_MODELS_SINGLE_TRACK_DRIFT_MODEL_HPP_
 
 // Non-ROS dependencies
 #include <memory>
@@ -230,4 +230,4 @@ class SingleTrackDriftModel : public SingleTrackModelInterface {
 
 }  // namespace svdsim_server
 
-#endif  // MONACOF1_SIM_SERVER_MODELS_SINGLE_TRACK_DRIFT_MODEL_HPP_
+#endif  // SVDSIM_SERVER_MODELS_SINGLE_TRACK_DRIFT_MODEL_HPP_

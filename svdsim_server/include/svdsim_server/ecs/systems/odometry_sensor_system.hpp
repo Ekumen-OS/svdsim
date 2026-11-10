@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef MONACOF1_SIM_SERVER_ECS_SYSTEMS_SENSOR_FEEDBACK_PUBLISHER_SYSTEM_HPP_
-#define MONACOF1_SIM_SERVER_ECS_SYSTEMS_SENSOR_FEEDBACK_PUBLISHER_SYSTEM_HPP_
+#ifndef SVDSIM_SERVER_ECS_SYSTEMS_ODOMETRY_SENSOR_SYSTEM_HPP_
+#define SVDSIM_SERVER_ECS_SYSTEMS_ODOMETRY_SENSOR_SYSTEM_HPP_
 
 // Standard library
 #include <map>
@@ -100,4 +100,4 @@ class OdometrySensorSystem : public SystemInterface {
 
 }  // namespace svdsim_server
 
-#endif  // MONACOF1_SIM_SERVER_ECS_SYSTEMS_SENSOR_FEEDBACK_PUBLISHER_SYSTEM_HPP_
+#endif  // SVDSIM_SERVER_ECS_SYSTEMS_ODOMETRY_SENSOR_SYSTEM_HPP_

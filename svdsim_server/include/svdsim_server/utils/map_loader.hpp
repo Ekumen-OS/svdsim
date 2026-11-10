@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef MONACOF1_SIM_SERVER_UTILS_MAP_LOADER_HPP_
-#define MONACOF1_SIM_SERVER_UTILS_MAP_LOADER_HPP_
+#ifndef SVDSIM_SERVER_UTILS_MAP_LOADER_HPP_
+#define SVDSIM_SERVER_UTILS_MAP_LOADER_HPP_
 
 // Standard library
 #include <string>
@@ -48,4 +48,4 @@ StaticMap load_map_from_yaml(const std::string& yaml_filepath);
 }  // namespace utils
 }  // namespace svdsim_server
 
-#endif  // MONACOF1_SIM_SERVER_UTILS_MAP_LOADER_HPP_
+#endif  // SVDSIM_SERVER_UTILS_MAP_LOADER_HPP_

@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef MONACOF1_SIM_SERVER_COMPONENTS_LIDAR_SENSOR_COMPONENT_HPP_
-#define MONACOF1_SIM_SERVER_COMPONENTS_LIDAR_SENSOR_COMPONENT_HPP_
+#ifndef SVDSIM_SERVER_ECS_COMPONENTS_LIDAR_SENSOR_COMPONENT_HPP_
+#define SVDSIM_SERVER_ECS_COMPONENTS_LIDAR_SENSOR_COMPONENT_HPP_
 
 #include <memory>
 #include <vector>
@@ -56,4 +56,4 @@ class LidarSensorComponent {
 
 }  // namespace svdsim_server
 
-#endif  // MONACOF1_SIM_SERVER_COMPONENTS_LIDAR_SENSOR_COMPONENT_HPP_
+#endif  // SVDSIM_SERVER_ECS_COMPONENTS_LIDAR_SENSOR_COMPONENT_HPP_

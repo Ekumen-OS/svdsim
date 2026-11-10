@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef MONACOF1_SIM_SERVER_ECS_SERVICES_SIMULATION_CLOCK_HPP_
-#define MONACOF1_SIM_SERVER_ECS_SERVICES_SIMULATION_CLOCK_HPP_
+#ifndef SVDSIM_SERVER_ECS_SERVICES_SIMULATION_CLOCK_HPP_
+#define SVDSIM_SERVER_ECS_SERVICES_SIMULATION_CLOCK_HPP_
 
 #include "svdsim_server/datatypes.hpp"
 #include "svdsim_server/wall_time.hpp"
@@ -98,4 +98,4 @@ class SimulationClock {
 
 }  // namespace svdsim_server
 
-#endif  // MONACOF1_SIM_SERVER_ECS_SERVICES_SIMULATION_CLOCK_HPP_
+#endif  // SVDSIM_SERVER_ECS_SERVICES_SIMULATION_CLOCK_HPP_

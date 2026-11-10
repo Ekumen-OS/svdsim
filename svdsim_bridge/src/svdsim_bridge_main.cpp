@@ -21,7 +21,7 @@
 int main(int argc, char* argv[]) {
   rclcpp::init(argc, argv);
 
-  auto node = std::make_shared<svdsim_bridge::MonacoF1SimBridgeNode>();
+  auto node = std::make_shared<svdsim_bridge::SvdsimBridgeNode>();
 
   rclcpp::spin(node);
 

@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef MONACOF1_SIM_SERVER_ECS_SYSTEMS_PHYSICS_SIMULATION_SYSTEM_HPP_
-#define MONACOF1_SIM_SERVER_ECS_SYSTEMS_PHYSICS_SIMULATION_SYSTEM_HPP_
+#ifndef SVDSIM_SERVER_ECS_SYSTEMS_PHYSICS_SIMULATION_SYSTEM_HPP_
+#define SVDSIM_SERVER_ECS_SYSTEMS_PHYSICS_SIMULATION_SYSTEM_HPP_
 
 // Standard library
 #include <map>
@@ -86,4 +86,4 @@ class PhysicsSimulationSystem {
 
 }  // namespace svdsim_server
 
-#endif  // MONACOF1_SIM_SERVER_ECS_SYSTEMS_PHYSICS_SIMULATION_SYSTEM_HPP_
+#endif  // SVDSIM_SERVER_ECS_SYSTEMS_PHYSICS_SIMULATION_SYSTEM_HPP_
