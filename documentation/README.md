@@ -1,7 +1,7 @@
 # SVD Simulator Documentation
 
-The SVD simulator (`svd_simulator/`) is a lightweight 2D simulator for autonomous racing. It is
-composed of four packages.
+The SVDSim simulator is a lightweight 2D simulator for autonomous racing. It is composed of four
+packages.
 
 This folder documents the **parameters and interfaces** of those packages. Each package has its own
 page, and the server parameters are split along the sections of the configuration file so that a
@@ -18,7 +18,7 @@ parameter can be found by the block it belongs to; they are indexed in the
 | `svdsim_proto` | [Protobuf definitions](svdsim_proto.md) | ZeroMQ wire format shared by server and bridge |
 
 For the architecture overview, the model bibliography and the feature list, see
-[`svd_simulator/README.md`](../../svd_simulator/README.md).
+[`README.md`](../README.md).
 
 ## How to read the parameter tables
 
@@ -46,11 +46,11 @@ default value are provided in [`config_examples/`](config_examples/README.md):
 ```bash
 # Simulation server
 ros2 run svdsim_server svdsim_server_node --ros-args \
-  --params-file documentation/svd_simulator/config_examples/svdsim_server_default.yaml
+  --params-file documentation/config_examples/svdsim_server_default.yaml
 
 # ROS 2 bridge for one vehicle
 ros2 run svdsim_bridge svdsim_bridge_node --ros-args \
-  --params-file documentation/svd_simulator/config_examples/svdsim_bridge_default.yaml
+  --params-file documentation/config_examples/svdsim_bridge_default.yaml
 ```
 
 `map_path` and `grid_listing_file` are required and empty in the examples, so both must be set to
@@ -63,7 +63,7 @@ The plots in these pages are produced from the same equations that the simulator
 parameter values of a representative example platform rather than the node defaults:
 
 ```bash
-python3 documentation/svd_simulator/figures/generate_figures.py
+python3 documentation/figures/generate_figures.py
 ```
 
 The script requires Python 3 with `numpy` and `matplotlib` and writes the PNG files next to itself in
