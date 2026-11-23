@@ -101,4 +101,4 @@ corners.
 - [Map and grid configuration](map_and_grid.md)
 - [Vehicle dynamics parameters](vehicle_dynamics.md)
 - [Bridge parameters](../svdsim_bridge.md)
-- [Sparring vehicles guide](../../sparring_vehicles.md)
+- [Vehicle grid configuration](map_and_grid.md#vehicle-grid-file)

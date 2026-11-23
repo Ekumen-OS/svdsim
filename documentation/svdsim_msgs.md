@@ -4,7 +4,7 @@
 sensor messages. They are thin wrappers around values that have no standard equivalent in
 `sensor_msgs` or `nav_msgs`.
 
-All four messages are defined in `svd_simulator/svdsim_msgs/msg/` and generated with
+All four messages are defined in `svdsim_msgs/msg/` and generated with
 `rosidl_default_generators`.
 
 ## Message overview

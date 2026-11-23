@@ -26,7 +26,7 @@ change.
 
 Usage (from the repository root):
 
-    python3 documentation/svd_simulator/figures/generate_figures.py
+    python3 documentation/figures/generate_figures.py
 """
 
 import os
