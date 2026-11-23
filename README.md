@@ -8,7 +8,7 @@ A lightweight 2D simulator for autonomous racing development. The simulator prov
 
 ## Packages
 
-- **svdsim_server**: Core simulation server implementing vehicle dynamics models, sensor models (IMU, LiDAR, cameras), and utilities for trajectory management and path following. Uses Box2D for efficient collision detection and raytracing. Provides ROS 2 component-based architecture with protobuf-based communication.
+- **svdsim_server**: Core simulation server implementing vehicle dynamics models, sensor models (IMU, LiDAR, wheel encoders), and utilities for trajectory management and path following. Uses Box2D for efficient collision detection and raytracing. Provides ROS 2 component-based architecture with protobuf-based communication.
 
 - **svdsim_bridge**: ROS 2 bridge for connecting the simulation server to the ROS 2 ecosystem, enabling integration with perception, planning, and control nodes.
 
@@ -24,7 +24,7 @@ TBD: usage instructions will be added once a standalone example launch package i
 
 - **Efficient 2D Physics**: Box2D-based collision detection and raytracing for fast, deterministic simulation
 - **Advanced Vehicle Dynamics**: Modified Nicolas-Comstock (MNC) tire model for realistic combined longitudinal and lateral forces
-- **High-Fidelity Sensors**: IMU with Allan variance noise modeling, LiDAR raytracing, and camera simulation
+- **High-Fidelity Sensors**: IMU with white-noise and bias modeling, LiDAR raytracing, and wheel encoders
 - **Component Architecture**: ROS 2 component-based design with protobuf communication for modularity and performance
 
 ## Bibliographical References
