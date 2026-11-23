@@ -153,10 +153,10 @@ oscillate near the 0.15 m/s cut-over.
 - `velocity_deadband` should carry the value measured on the target vehicle (0.75 m/s is typical
   for the RoboRacer drivetrain). Lower values make low-speed manoeuvres, such as three-point turns,
   possible in simulation.
-- `acceleration_max` and `braking_deceleration` of 20 m/s^2 are far above what the tires can
-  deliver. They only bound the command; the kinematic model has no force limit, so a high value
-  effectively makes the speed loop instantaneous. Reduce them if the simulated vehicle should
-  respect a friction-limited acceleration profile.
+- Values of `acceleration_max` and `braking_deceleration` far above what the tires can deliver
+  (for example, 20 m/s^2) only bound the command; the kinematic model has no force limit, so a
+  high value effectively makes the speed loop instantaneous. Reduce them if the simulated vehicle
+  should respect a friction-limited acceleration profile.
 - `motor_drive_rise_time` is the main knob for matching the speed-loop bandwidth of the real car.
   Measure a velocity step on the hardware, extract its 90 % rise time, and use that value here; 0.1 s
   is a reasonable starting point for the VESC-based platform.
